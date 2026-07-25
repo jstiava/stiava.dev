@@ -1,6 +1,7 @@
 import { ProjectCard } from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
+import { cn } from "@/lib/utils";
 import { CircleParking, CircleUserRound, Code, SearchIcon } from "lucide-react";
 import Image from "next/image";
 
@@ -9,13 +10,21 @@ export default function Home() {
     <div className="flex flex-col gap-4">
 
       {/* HERO */}
-      <div className="flex w-full justify-between p-16 py-12">
-        <div className="flex flex-col gap-4 ">
-          <h2 className="text-5xl font-bold">Welcome<br />I'm Jeremy.</h2>
+      <div className={cn(
+        "flex flex-col-reverse md:flow-row w-full justify-start px-10  py-12 gap-8",
+        "md:flex-row md:justify-between md:gap-0 md:px-16"
+      )}>
+        <div className="flex flex-col gap-4">
+          <h2 className="text-5xl font-bold">Hey there<br />I'm Jeremy.</h2>
           <p>Software Developer from Chicago.<br /> B.S. in Computer Science & Political Science, WashU</p>
-          <Button variant={'outline'} className={'w-fit'}>Download Resume</Button>
+          <div className="flex pt-4">
+            <Button  className={'w-full h-12'} size={'lg'} >Download Resume</Button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 items-end">
+        <div className={cn(
+          "flex flex-col gap-6 items-center",
+          "md:items-end"
+        )}>
           <div className="w-70 h-70 rounded-full bg-[lightgrey] bg-cover bg-center" style={{
             backgroundImage: `url("/headshot_chatgpt_greyscale.png")`,
           }} >
@@ -26,13 +35,19 @@ export default function Home() {
 
             </div>
           </div>
-          <caption className="text-xs">Enhanced with ChatGPT.</caption>
+          <span className="text-xs opacity-50">Photo enhanced with ChatGPT.</span>
         </div>
       </div>
 
       {/* SEARCH */}
-      <div className="flex px-16">
-        <div className="flex flex-col w-full px-8 gap-4">
+      <div className={cn(
+        "flex px-8",
+        "md:px-16"
+      )}>
+        <div className={cn(
+          "flex flex-col w-full px-0 gap-4",
+          " md:px-8 "
+        )}>
           <InputGroup className="h-12 px-2 gap-1">
             <InputGroupInput placeholder="Search..." />
             <InputGroupAddon>
@@ -55,41 +70,41 @@ export default function Home() {
 
 
       {/* BLOG */}
-      <div className="flex px-16 py-16">
+      <div className={cn(
+        "flex px-6 py-16",
+        "md:px-16"
+      )}>
         <div className="flex flex-col w-full items-center gap-6 border border-1 border-border rounded-md py-24">
-          <span className="text-3xl font-lighter tracking-tight font-serif">Park for free.</span>
-          <p>Look at paid parking, permits, and enforcement predictions.</p>
+          <span className="text-3xl font-lighter tracking-tight font-serif text-center">Park for free.</span>
+          <p className="text-center">Look at paid parking, permits, and enforcement predictions.</p>
         </div>
       </div>
 
 
       {/* PROJECTS */}
-      <div className="flex px-16 py-16">
+      <div className={cn(
+        "flex px-8 py-16",
+        "md:px-16"
+      )}>
         <div className="flex flex-col w-full items-center gap-12">
           <h2 className="text-4xl font-bold tracking-tight">Projects</h2>
           <div className="flex flex-wrap justify-center gap-[2rem] w-full">
-
             {PROJECTS.map(project => {
-
               return (
-                <div className="flex w-[calc(50%-1rem)] max-w-[25rem]" key={project.key} >
+                <div className={cn(
+                  "flex w-full",
+                  "md:w-[calc(50%-1rem)] md:max-w-[20rem]"
+                )} key={project.key} >
                   <ProjectCard {...project} />
                 </div>
               )
             })}
-
           </div>
         </div>
       </div>
 
-      {/* FOOTER */}
-      <div className="flex w-full h-fit min-h-[40vh] bg-border mt-16">
-        <div className="flex flex-col p-12 gap-2">
-          <p className="text-2xl font-bold tracking-tight">Jeremy Stiava</p>
-          <p>Software Developer from Chicago.<br /> B.S. in Computer Science & Political Science, WashU</p>
-          <Button variant={'link'} className={'w-fit px-0'}>jeremystiava@gmail.com</Button>
-        </div>
-      </div>
+
+     
 
     </div>
   );
@@ -97,8 +112,8 @@ export default function Home() {
 
 const PROJECTS = [
   {
-    title: "Overplanner",
-    description: "The last calendar you'll ever use",
+    title: "Calendar App",
+    description: "The last calendar you'll ever use. An app for all time.",
     technologies: ['React', 'AWS'],
     key: 'overplanner',
     coverImage: 'projects/overplanner-1.png'
@@ -116,5 +131,12 @@ const PROJECTS = [
     technologies: ['React', 'AWS'],
     key: 'terandina',
     coverImage: '/projects/terandina-1.png'
+  },
+  {
+    title: "ORD Gate Finder Game",
+    description: "Test your skills in ATC ground metering",
+    technologies: ['React', 'AWS'],
+    key: 'ord_gate_finder',
+    coverImage: '/projects/ord-gates-1.png'
   },
 ]
