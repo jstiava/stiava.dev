@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 w-full">
 
       {/* HERO */}
       <div className={cn(
@@ -15,10 +15,12 @@ export default function Home() {
         "md:flex-row md:justify-between md:gap-0 md:px-16"
       )}>
         <div className="flex flex-col gap-4">
-          <h2 className="text-5xl font-bold">Hey there<br />I'm Jeremy.</h2>
-          <p>Software Developer from Chicago.<br /> B.S. in Computer Science & Political Science, WashU</p>
+          <h2 className="text-5xl font-bold">Jeremy Stiava<br />Full-Stack Software Developer</h2>
+          <p>Interest in GIS mapping, election data, and personal planning.<br /> B.S. in Computer Science & Political Science, WashU</p>
           <div className="flex pt-4">
-            <Button  className={'w-full h-12'} size={'lg'} >Download Resume</Button>
+            <Button  className={'w-fit max-w-full px-8 h-12'} size={'lg'}>
+              <a href="/JeremyStiava_Resume_2060713.pdf">Download Resume</a>
+            </Button>
           </div>
         </div>
         <div className={cn(
@@ -40,7 +42,7 @@ export default function Home() {
       </div>
 
       {/* SEARCH */}
-      <div className={cn(
+      {/* <div className={cn(
         "flex px-8",
         "md:px-16"
       )}>
@@ -66,11 +68,11 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
 
 
       {/* BLOG */}
-      <div className={cn(
+      {/* <div className={cn(
         "flex px-6 py-16",
         "md:px-16"
       )}>
@@ -78,7 +80,7 @@ export default function Home() {
           <span className="text-3xl font-lighter tracking-tight font-serif text-center">Park for free.</span>
           <p className="text-center">Look at paid parking, permits, and enforcement predictions.</p>
         </div>
-      </div>
+      </div> */}
 
 
       {/* PROJECTS */}
@@ -103,6 +105,10 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="flex items-center justify-center px-8">
+        <span className="text-center">More projects will be posted soon...</span>
+
+      </div>
 
      
 
@@ -111,32 +117,33 @@ export default function Home() {
 }
 
 const PROJECTS = [
-  {
-    title: "Calendar App",
-    description: "The last calendar you'll ever use. An app for all time.",
-    technologies: ['React', 'AWS'],
-    key: 'overplanner',
-    coverImage: 'projects/overplanner-1.png'
-  },
-  {
-    title: "CTA API Wrapper",
-    description: "A better way to view buses and trains",
-    technologies: ['React', 'AWS'],
-    key: 'cta_transit',
-    coverImage: '/projects/cta-1.png'
-  },
+  // {
+  //   title: "Calendar App",
+  //   description: "The last calendar you'll ever use. An app for all time.",
+  //   technologies: ['React', 'AWS'],
+  //   key: 'overplanner',
+  //   coverImage: 'projects/overplanner-1.png'
+  // },
+  // {
+  //   title: "CTA API Wrapper",
+  //   description: "A better way to view buses and trains",
+  //   technologies: ['React', 'AWS'],
+  //   key: 'cta_transit',
+  //   coverImage: '/projects/cta-1.png'
+  // },
   {
     title: "Terandina LLC",
-    description: "Native clothing & jewelry",
-    technologies: ['React', 'AWS'],
+    description: "Indigeouous-owned small business in Chicago, IL, selling cultural inspired hoodies, ponchos, and accessories.",
+    technologies: ['NextJS', 'React', 'Custom CMS', 'Stripe Payments API'],
     key: 'terandina',
-    coverImage: '/projects/terandina-1.png'
+    coverImage: '/projects/Terandina-screenshot-1.png',
+    slug: "/projects/terandina"
   },
-  {
-    title: "ORD Gate Finder Game",
-    description: "Test your skills in ATC ground metering",
-    technologies: ['React', 'AWS'],
-    key: 'ord_gate_finder',
-    coverImage: '/projects/ord-gates-1.png'
-  },
+  // {
+  //   title: "ORD Gate Finder Game",
+  //   description: "Test your skills in ATC ground metering",
+  //   technologies: ['React', 'AWS'],
+  //   key: 'ord_gate_finder',
+  //   coverImage: '/projects/ord-gates-1.png'
+  // },
 ]

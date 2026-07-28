@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Card,
   CardContent,
@@ -17,6 +19,7 @@ import {
   Clock3,
   Code,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface ProjectCardProps {
   title: string;
@@ -27,7 +30,8 @@ interface ProjectCardProps {
   updated?: string;
   github?: string;
   demo?: string;
-  coverImage?: string
+  coverImage?: string;
+  slug?: string
 
 }
 
@@ -40,10 +44,15 @@ export function ProjectCard({
   updated,
   github,
   demo,
-  coverImage
+  coverImage,
+  slug
 }: ProjectCardProps) {
+
+  const router = useRouter();
   return (
-    <Card className="pt-0 group w-full overflow-hidden border-border/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <Card className="pt-0 group w-full overflow-hidden border-border/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" onClick={e => {
+      slug && router.push(slug)
+    }}>
       {coverImage && (
         <div className="relative aspect-[16/9] overflow-hidden">
           <img
@@ -116,7 +125,6 @@ export function ProjectCard({
             <Button
               variant="outline"
               size="sm"
-              asChild
               className="flex-1"
             >
               <a
@@ -133,7 +141,6 @@ export function ProjectCard({
           {demo && (
             <Button
               size="sm"
-              asChild
               className="flex-1"
             >
               <a
