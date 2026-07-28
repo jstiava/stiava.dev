@@ -1,11 +1,19 @@
+'use client'
+
+import { LoadingButton } from "@/components/LoadingButton";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
 import { CircleParking, CircleUserRound, Code, SearchIcon } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+
+  const router = useRouter();
+
+
   return (
     <div className="flex flex-col gap-4 w-full">
 
@@ -18,9 +26,11 @@ export default function Home() {
           <h2 className="text-5xl font-bold">Jeremy Stiava<br />Full-Stack Software Developer</h2>
           <p>Interest in GIS mapping, election data, and personal planning.<br /> B.S. in Computer Science & Political Science, WashU</p>
           <div className="flex pt-4">
-            <Button  className={'w-fit max-w-full px-8 h-12'} size={'lg'}>
-              <a href="/JeremyStiava_Resume_2060713.pdf">Download Resume</a>
-            </Button>
+            <LoadingButton  className={'w-fit max-w-full px-8 h-12'} onClick={() => {
+              router.push("/JeremyStiava_Resume_2060713.pdf")
+            }}>
+              Download Resume
+            </LoadingButton>
           </div>
         </div>
         <div className={cn(

@@ -8,6 +8,7 @@ export default function RootLayout({
   return (
     <SessionContextWrapper>
       <html lang="en">
+        
         <body
           className={`${youtubeSans.variable} antialiased`}
         >
@@ -73,4 +74,5 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header"; import SessionContextWrapper from "./SessionContext";
 import Footer from "@/components/Footer";
+import { RouteLoader } from "@/components/RouterLoader";
 
